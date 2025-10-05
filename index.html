@@ -1,50 +1,224 @@
-<!-- Refer & Earn Section -->
-<div class="panel" id="referEarn" style="margin-top:20px;text-align:center;position:relative;overflow:hidden;">
-  <h2 style="margin-bottom:10px;color:#00d1ff;font-size:18px;">💸 Refer & Earn</h2>
-  <p style="color:#bfe8ff;font-size:13px;margin-bottom:12px;">Invite friends and earn <strong>$10</strong> for every 10 referrals!</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>USD Mining — Real</title>
+  <style>
+    :root{--accent:#00d1ff;--bg1:#0b1020;--bg2:#081226}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, Arial, sans-serif;color:#e6f7ff}
+    body{background: radial-gradient(circle at 10% 10%, rgba(0,209,255,0.06), transparent 10%), linear-gradient(120deg,var(--bg1),var(--bg2)); overflow:hidden}
+    .glow{position:fixed;inset:0;pointer-events:none;mix-blend-mode:screen;}
+    .glow::after{content:'';position:absolute;left:-10%;top:-10%;width:120%;height:120%;background:radial-gradient(circle at 20% 20%, rgba(0,209,255,0.12), transparent 15%), radial-gradient(circle at 80% 80%, rgba(128,70,255,0.08), transparent 20%);filter:blur(40px);animation:float 10s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(-10px)}50%{transform:translateY(10px)}100%{transform:translateY(-10px)}}
+    .wrap{position:relative;z-index:2;max-width:980px;margin:40px auto;padding:28px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 40px rgba(2,6,23,0.6);backdrop-filter: blur(6px)}
+    header{display:flex;gap:12px;align-items:center}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .badge{width:68px;height:68px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#845ef7);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;box-shadow:0 8px 30px rgba(0,0,0,0.4)}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:4px 0 20px;color:#cfeeff}
+    .main{display:grid;grid-template-columns:1fr 320px;gap:20px}
+    .panel{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
+    .mine-big{display:flex;flex-direction:column;align-items:center;gap:16px;padding:26px;height:420px}
+    .mining-gif{width:100%;height:180px;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center}
+    .stats{display:flex;gap:12px;align-items:center}
+    .stat{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;min-width:120px;text-align:center}
+    .stat .num{font-weight:700;font-size:20px}
+    .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;}
+    .btn{padding:12px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#845ef7);border:none;color:#021022;font-weight:700;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cfeeff}
+    .wallet{display:flex;flex-direction:column;gap:12px}
+    label{font-size:13px;color:#bfe8ff}
+    input,select{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6f7ff}
+    .small{font-size:13px;color:#9bdcff}
+    .tx-log{max-height:180px;overflow:auto;padding:8px;border-radius:8px;background:rgba(0,0,0,0.18)}
+    footer{margin-top:18px;text-align:center;color:#99dfff;font-size:13px}
+    @media (max-width:880px){.main{grid-template-columns:1fr} .mine-big{height:auto}.wallet{order:2}}
+    .spinning{animation: spin 1s linear infinite}
+    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 
-  <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:14px;">
-    <button class="btn" id="copyLinkBtn" style="padding:12px 18px;font-weight:700;display:flex;align-items:center;gap:6px;">
-      🔗 Copy Referral Link
-    </button>
-    <button class="btn ghost" id="shareBtn" style="padding:12px 18px;font-weight:700;display:flex;align-items:center;gap:6px;">
-      📤 Share Now
-    </button>
+    /* Refer & Earn Styles */
+    #referEarn{margin-top:20px;text-align:center;position:relative;overflow:hidden}
+    #referEarn h2{margin-bottom:10px;color:#00d1ff;font-size:18px}
+    #referEarn p{color:#bfe8ff;font-size:13px;margin-bottom:12px}
+    #referEarn .btn:hover { opacity:0.9; transform:scale(1.05); transition:0.3s; }
+    #referEarn .btn.ghost { border:1px solid #00d1ff; color:#00d1ff; background:transparent; }
+    #referEarn img {width:120px;height:120px;margin:auto;display:block;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.4);}
+  </style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+  <header>
+    <div class="logo">
+      <div class="badge">USD</div>
+      <div>
+        <h1>USD Mining — Real</h1>
+        <p class="lead">Stylish GIF background • Click Start to begin mining • Withdraw via BEP20 / TRC20</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="main" style="margin-top:18px">
+    <div class="panel mine-big">
+      <div class="mining-gif" id="miningGif" title="Mining animation">
+        <svg id="miningSvg" width="140" height="140" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="transform-origin:center;">
+          <defs>
+            <linearGradient id="g1" x1="0%" x2="100%"><stop offset="0%" stop-color="#00d1ff"/><stop offset="100%" stop-color="#845ef7"/></linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="28" fill="url(#g1)" opacity="0.12"/>
+          <text x="32" y="36" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff" style="filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4));">$</text>
+        </svg>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="small">Balance</div>
+          <div class="num" id="balanceCoins">0</div>
+          <div class="small">Coins</div>
+        </div>
+        <div class="stat">
+          <div class="small">USD Equivalent</div>
+          <div class="num" id="balanceUSD">$0.00</div>
+          <div class="small">(1,000 coins = $5)</div>
+        </div>
+        <div class="stat">
+          <div class="small">Today's Mined</div>
+          <div class="num" id="todayMined">0</div>
+          <div class="small">coins (daily cap 1000)</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="startBtn">Start Mining</button>
+        <button class="btn ghost" id="stopBtn">Stop</button>
+        <button class="btn ghost" id="claimBtn">Claim (save to wallet)</button>
+      </div>
+
+      <div style="width:100%;text-align:center;color:#bfe8ff;font-size:13px;margin-top:6px">
+        Tip: Mining here is simulated. Real payouts need backend integration.
+      </div>
+
+      <!-- Refer & Earn Section -->
+      <div id="referEarn">
+        <h2>💸 Refer & Earn</h2>
+        <p>Invite friends and earn <strong>$10</strong> for every 10 referrals!</p>
+        <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+          <button class="btn" id="copyLinkBtn" style="display:flex;align-items:center;gap:6px;">🔗 Copy Referral Link</button>
+          <button class="btn ghost" id="shareBtn" style="display:flex;align-items:center;gap:6px;">📤 Share Now</button>
+        </div>
+        <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" alt="Refer & Earn Animation">
+        <div style="font-size:12px;color:#9bdcff;margin-top:8px;">Tap buttons to copy or share your referral link!</div>
+      </div>
+    </div>
+
+    <aside class="panel wallet">
+      <div>
+        <label>Your Wallet Balance (coins)</label>
+        <div style="font-size:22px;font-weight:700;margin:6px 0" id="walletBalance">0</div>
+        <div class="small">Conversion: 1000 coins = $5 → 1 coin = $0.005</div>
+      </div>
+
+      <div>
+        <label for="network">Select Network</label>
+        <select id="network">
+          <option value="bep20">BEP20</option>
+          <option value="trc20">TRC20</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="address">Wallet Address (to withdraw)</label>
+        <input id="address" placeholder="Enter BEP20/TRC20 address" />
+      </div>
+
+      <div>
+        <label for="withdrawAmount">Withdraw Amount (USD)</label>
+        <input id="withdrawAmount" placeholder="e.g. 10" />
+        <div class="small">Minimum withdraw: $10 (equals 2000 coins). Daily withdraws limited by balance.</div>
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn" id="withdrawBtn">Request Withdraw</button>
+        <button class="btn ghost" id="resetBtn">Reset</button>
+      </div>
+
+      <div style="margin-top:8px">
+        <div class="small">Transaction log</div>
+        <div class="tx-log" id="txLog"></div>
+      </div>
+    </aside>
   </div>
 
-  <!-- Animated GIF / Icon -->
-  <div style="margin-top:10px;">
-    <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" alt="Refer & Earn Animation" style="width:120px;height:120px;margin:auto;display:block;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.4);">
-  </div>
-
-  <div style="font-size:12px;color:#9bdcff;margin-top:8px;">Tap the buttons above to copy your referral link or share with friends!</div>
+  <footer>
+    This is a frontend real version. To make payouts you MUST add a secure backend, payment processors, and KYC/compliance.
+  </footer>
 </div>
 
 <script>
-  // Sample referral link logic
+  const COINS_PER_SECOND = 1;
+  const DAILY_CAP = 1000;
+  const COIN_TO_USD = 5 / 1000;
+  const MIN_WITHDRAW_USD = 10;
+  const STORAGE_KEY = 'usd_mining_real_v1';
+
+  function nowISODate(){ return new Date().toISOString().slice(0,10); }
+  function loadState(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return {wallet:0,todayMined:0,today:nowISODate(),txs:[]};
+    try{
+      const s=JSON.parse(raw);
+      if(s.today!==nowISODate()){s.today=nowISODate();s.todayMined=0;}
+      return s;
+    }catch(e){return {wallet:0,todayMined:0,today:nowISODate(),txs:[]}}
+  }
+  function saveState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+  let state = loadState();
+
+  const balanceCoinsEl = document.getElementById('balanceCoins');
+  const balanceUSDEl = document.getElementById('balanceUSD');
+  const todayMinedEl = document.getElementById('todayMined');
+  const walletBalanceEl = document.getElementById('walletBalance');
+  const txLogEl = document.getElementById('txLog');
+
+  let miningInterval = null;
+  let visibleMining = 0;
+
+  function render(){
+    balanceCoinsEl.textContent = Math.floor(visibleMining + state.todayMined);
+    const totalCoins = state.wallet + Math.floor(visibleMining + state.todayMined);
+    balanceUSDEl.textContent = '$' + (totalCoins * COIN_TO_USD).toFixed(2);
+    todayMinedEl.textContent = state.todayMined + Math.floor(visibleMining);
+    walletBalanceEl.textContent = state.wallet;
+
+    txLogEl.innerHTML = state.txs.slice().reverse().map(t=>{
+      return `<div style="padding:6px;border-bottom:1px dashed rgba(255,255,255,0.03)"><b>${t.type}</b> — ${t.msg}<div style="font-size:11px;color:#9bdcff">${t.time}</div></div>`;
+    }).join('');
+  }
+
+  function startMining(){ const svgEl=document.getElementById('miningSvg');if(svgEl)svgEl.classList.add('spinning');if(miningInterval)return;document.getElementById('startBtn').textContent='Mining...';miningInterval=setInterval(()=>{const toAdd=COINS_PER_SECOND;if(state.todayMined+visibleMining+toAdd>DAILY_CAP){const remaining=Math.max(0,DAILY_CAP-state.todayMined-visibleMining);visibleMining+=remaining;stopMining();state.txs.push({type:'Info',msg:`Daily mining cap reached (${DAILY_CAP} coins)`,time:new Date().toLocaleString()});saveState(state);render();return;}visibleMining+=toAdd;render();},1000);}
+  function stopMining(){ const svgEl=document.getElementById('miningSvg');if(svgEl)svgEl.classList.remove('spinning');if(miningInterval)clearInterval(miningInterval);miningInterval=null;document.getElementById('startBtn').textContent='Start Mining';}
+  function claimToWallet(){ const coins=Math.floor(visibleMining);if(coins<=0){alert('Nothing mined yet');return;}state.wallet+=coins;state.todayMined+=coins;state.txs.push({type:'Claim',msg:`Saved ${coins} coins to wallet`,time:new Date().toLocaleString()});visibleMining=0;saveState(state);render();}
+  function requestWithdraw(){ const addr=document.getElementById('address').value.trim(); const net=document.getElementById('network').value; const usd=parseFloat(document.getElementById('withdrawAmount').value); if(!addr){alert('Please enter your wallet address');return} if(isNaN(usd)||usd<=0){alert('Enter a valid withdraw amount');return} if(usd<MIN_WITHDRAW_USD){alert('Minimum withdraw is $'+MIN_WITHDRAW_USD);return} const neededCoins=Math.ceil(usd/COIN_TO_USD); if(state.wallet<neededCoins){alert('Insufficient balance. You need '+neededCoins+' coins for $'+usd);return} state.wallet-=neededCoins;state.txs.push({type:'Withdraw',msg:`Requested $${usd.toFixed(2)} → ${neededCoins} coins to ${net.toUpperCase()} ${addr}`,time:new Date().toLocaleString()});saveState(state);render();}
+  function resetDemo(){ if(!confirm('Reset data?')) return;state={wallet:0,todayMined:0,today:nowISODate(),txs:[]};visibleMining=0;saveState(state);render();}
+
+  document.getElementById('startBtn').addEventListener('click', startMining);
+  document.getElementById('stopBtn').addEventListener('click', stopMining);
+  document.getElementById('claimBtn').addEventListener('click', claimToWallet);
+  document.getElementById('withdrawBtn').addEventListener('click', requestWithdraw);
+  document.getElementById('resetBtn').addEventListener('click', resetDemo);
+
+  // Refer & Earn Buttons
   const referralLink = "https://yourwebsite.com/?ref=USER123";
-
-  document.getElementById('copyLinkBtn').addEventListener('click', () => {
-    navigator.clipboard.writeText(referralLink).then(() => {
-      alert("Referral link copied! Share it with friends to earn $10 for every 10 referrals.");
-    });
+  document.getElementById('copyLinkBtn').addEventListener('click',()=>{
+    navigator.clipboard.writeText(referralLink).then(()=>{alert("Referral link copied! Share to earn $10 for 10 referrals.");});
+  });
+  document.getElementById('shareBtn').addEventListener('click',()=>{
+    if(navigator.share){navigator.share({title:'USD Mining Refer & Earn',text:'Join USD Mining and earn rewards! Use my referral link:',url:referralLink}).catch(console.error);}else{alert("Sharing not supported. Please copy the referral link.");}
   });
 
-  document.getElementById('shareBtn').addEventListener('click', () => {
-    if(navigator.share){
-      navigator.share({
-        title: 'USD Mining Refer & Earn',
-        text: 'Join USD Mining and earn rewards! Use my referral link:',
-        url: referralLink
-      }).catch(console.error);
-    } else {
-      alert("Sharing not supported on this device. Please copy the referral link.");
-    }
-  });
+  render();
+  setInterval(()=>{saveState(state);},4000);
 </script>
-
-<style>
-  /* Mobile-friendly & stylish hover effects */
-  #referEarn .btn:hover { opacity:0.9; transform:scale(1.05); transition:0.3s; }
-  #referEarn .btn.ghost { border:1px solid #00d1ff; color:#00d1ff; background:transparent; }
-  </style>
+</body>
+  </html>
